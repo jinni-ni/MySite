@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'polls.apps.PollsConfig',
+    'myapp.apps.MyappConfig',
 ]
 
 MIDDLEWARE = [
