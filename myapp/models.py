@@ -72,6 +72,19 @@ class Personal(models.Model):
         "Returns the person's full name"
         return '%s %s' % (self.first_name, self.last_name)
 
+class MyPersonal(Personal):
+    class Meta:
+        proxy = True
+
+    def do_something(self):
+        #...
+        pass
+
+class OrderedPersonal(Personal):
+    class Meta:
+        ordering = ["last_name"]
+        proxy = True
+
 class Blog(models.Model):
     name = models.CharField(max_length=100)
     tagline = models.TextField()
@@ -96,5 +109,33 @@ class Student(CommonInfo):
     class Meta(CommonInfo.Meta):
         db_table = 'student_info'
 
+class Place(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=80)
 
+class Restaurant(Place):
+    serves_hot_dogs = models.BooleanField(default=False)
+    serves_pizza = models.BooleanField(default=False)
 
+class Supplier(Place):
+    customers = models.ManyToManyField(Place, related_name='provider')
+
+class NewManager(models.Manager):
+    #..
+    pass
+
+class MyPerson(Person):
+    objects = NewManager()
+
+    class Meta:
+        proxy = True
+
+class ExtraManagers(models.Model):
+    secondary = NewManager()
+
+    class Meta:
+        abstract = True
+
+class MyPerson(Person, ExtraManagers):
+    class Meta:
+        proxy = True
