@@ -136,6 +136,4 @@ class ExtraManagers(models.Model):
     class Meta:
         abstract = True
 
-class MyPerson(Person, ExtraManagers):
-    class Meta:
-        proxy = True
+
