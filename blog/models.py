@@ -27,3 +27,8 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.headline
+
+class ThemeBlog(Blog):
+    theme = models.CharField(max_length=200)
+
+
