@@ -30,5 +30,3 @@ class Entry(models.Model):
 
 class ThemeBlog(Blog):
     theme = models.CharField(max_length=200)
-
-
