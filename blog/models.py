@@ -25,6 +25,7 @@ class Entry(models.Model):
     number_of_pingbacks = models.IntegerField()
     rating = models.IntegerField()
 
+    
     def __str__(self):
         return self.headline
 
