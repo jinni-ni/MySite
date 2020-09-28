@@ -14,6 +14,7 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+
 class Entry(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     headline = models.CharField(max_length=255)
